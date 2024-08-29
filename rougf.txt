@@ -1,0 +1,32 @@
+<?php
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $email = $_POST['email'];
+    // $gender = $_POST['gender'];
+    $password = $_POST['password'];
+    $conform_pass = $_POST['conform_pass'];
+
+    $conn = new mysqli('localhost','root','','gym');
+    if($conn->connect_error){
+        die("Connection Failed: " . $conn->connect_error);
+    }elseif($password !== $conform_pass){
+            echo "Passwords do not match!";
+        } else {
+            // Hash the password before storing
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $stmt = $conn->prepare("insert into users(firstame, lastName, email, password)
+        values(?,?,?,?)");
+        $stmt->bind_param("ssss", $firstName, $lastName, $email, $password);
+        $stmt->execute();
+
+        if ($stmt->execute()) {
+            // Redirect to the main page after successful registration
+            header("Location: main_page.php"); // Change 'main_page.php' to your main page's file name
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+        $stmt->close();
+        $conn->close();
+    }
+?>
