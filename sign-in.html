@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="sign-in-page.css">
+    <title>FITNESSXIA</title>
+</head>
+
+<body>
+    <section>
+        <div class="sign-in">
+            <div class="out" onclick="window.location.href='index.html'">
+                <img src="log-out_5269565.png" alt="">
+            </div>
+            <form class="register" id="form" action="connect.php" method="post">
+                <label for="">Registration Form</label>
+                <input type="text" id="fname" placeholder="First Name" name="firstName">
+                <input type="text" id="lname" placeholder="Last Name" name="lastName">
+                <input type="email" id="email" placeholder="Email address" name="email">
+                <select name="Gender" id="gender" aria-placeholder="Gender" name="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Confirm Password" name="conform_pass">
+                <div class="buttons">
+                    <button>Register</button>
+                    <button onclick="reset()">Reset</button>
+                </div>
+            </form>
+            <div class="poster">
+                <img src="sign-in-poster.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <script src="logic.js"></script>
+</body>
+
+</html>
